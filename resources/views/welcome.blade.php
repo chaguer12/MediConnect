@@ -28,7 +28,7 @@
       </p>
       <div class="flex items-center">
         <a
-          href="/"
+          href=""
           class="bg-[#4338ca] inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md hover:shadow-lg "
         >
           Get started
@@ -39,7 +39,7 @@
   </div>
 </div>
  </section>
- <section id="heads">
+ <section >
  <h2 class="mb-8 py-16 text-center font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
  Find the answers you need
       
@@ -151,6 +151,10 @@
             </div>
           </div>
         </div>
+ </section>
+ <section id="heads">
+  
+
  </section>
 @include('includes.footer')
 </body>
