@@ -23,6 +23,8 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
+        <!-- Role -->
+        
 
         <!-- Remember Me -->
         <div class="block mt-4">
