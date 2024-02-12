@@ -13,4 +13,8 @@ class Doctor extends Model
         return $this->belongsTo(User::class);
 
     }
+    
+    public function Speciality(){
+        return $this->belongsTo(Speciality::class);
+    }
 }

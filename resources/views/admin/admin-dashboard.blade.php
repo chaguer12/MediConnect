@@ -52,20 +52,8 @@
           </button>
         </td>
       </tr>
-      <tr>
-        <td class="border px-4 py-2">2</td>
-        <td class="border px-4 py-2">Item 2</td>
-        <td class="border px-4 py-2">
-          <!-- CRUD actions -->
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Edit
-          </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <!-- Add more rows as needed -->
+      
+
     </tbody>
   </table>
 </div>
@@ -117,19 +105,7 @@
           </button>
         </td>
       </tr>
-      <tr>
-        <td class="border px-4 py-2">2</td>
-        <td class="border px-4 py-2">Item 2</td>
-        <td class="border px-4 py-2">
-          <!-- CRUD actions -->
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Edit
-          </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Delete
-          </button>
-        </td>
-      </tr>
+
       <!-- Add more rows as needed -->
     </tbody>
   </table>
