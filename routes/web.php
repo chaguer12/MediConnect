@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::resource('Speciality',SpecialityController::class)->except("create");
+Route::resource('Speciality',SpecialityController::class);
 // Route::get('/admin/admin-dashboard',[SpecialityController::class,'index']);
 Route::get('/doctor/doctor-dashboard', function () {
     return view('doctor.doctor-dashboard');

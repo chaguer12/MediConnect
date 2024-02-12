@@ -55,7 +55,25 @@ class SpecialityController extends Controller
      */
     public function update(Request $request, Speciality $speciality)
     {
-            //
+   
+        
+        // $request->validate([
+            //     'Speciality' => 'required|string|max:255', 
+            
+            // ]);
+            
+            // $speciality->update([
+                //     'Speciality' => $request->Speciality,
+                
+                // ]);
+                
+        if(!empty($request->Speciality)){
+            Speciality::where('id',$request->id)->update(['speciality_name' => $request->Speciality]);
+            return redirect()->route('Speciality.index')->with('success', 'Speciality updated successfully!');
+        }else{
+            
+            return redirect()->route('Speciality.index');
+        }
     }
 
     /**
