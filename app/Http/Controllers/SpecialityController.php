@@ -12,15 +12,10 @@ class SpecialityController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $specialities = Speciality::all();
+        return view('admin.admin-dashboard',[
+            'specialities' => $specialities,
+        ]);
     }
 
     /**
@@ -28,7 +23,15 @@ class SpecialityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'speciality' => 'required|string|max:30',
+        ]);
+        $speciality = new Speciality();
+        $speciality->speciality_name = $validatedData['speciality'];
+        $speciality->save();
+      
+        return redirect()->route('Speciality.index')->with('success', 'Speciality created successfully');
+
     }
 
     /**
@@ -52,7 +55,7 @@ class SpecialityController extends Controller
      */
     public function update(Request $request, Speciality $speciality)
     {
-        //
+            //
     }
 
     /**

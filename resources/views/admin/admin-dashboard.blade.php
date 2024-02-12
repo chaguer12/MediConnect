@@ -17,11 +17,14 @@
   <!-- Create Form -->
   <div class="mb-4">
   <p >Create a speciality</p>
+    <form action="{{ route('Speciality.store')}}" method="post" enctype="multipart/form-data">
+      @csrf
     <input type="text" name="speciality" placeholder="speciality" class="border rounded py-2 px-4">
     
     <button type="submit" class="bg-[#4338ca] hover:shadow-lg text-white font-bold py-2 px-4 rounded">
       Create
     </button>
+    </form>
   </div>
 
   <!-- Table -->
@@ -38,10 +41,13 @@
     <!-- Table body -->
     <tbody>
       <!-- Table rows -->
+
+      @foreach($specialities as $speciality)
       <tr>
-        <td class="border px-4 py-2">1</td>
-        <td class="border px-4 py-2">Item 1</td>
-       
+        <td class="border px-4 py-2">{{$speciality->id}}</td>
+        <td class="border px-4 py-2">{{$speciality->speciality_name}}     
+        <input hidden id="spec_input"  type="text" name="id" value="{{$speciality->speciality_name}}">
+        </td>
         <td class="border px-4 py-2">
           <!-- CRUD actions -->
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -52,6 +58,7 @@
           </button>
         </td>
       </tr>
+      @endforeach
       
 
     </tbody>

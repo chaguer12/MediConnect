@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpecialityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,8 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/admin/admin-dashboard', function () {
-    return view('admin.admin-dashboard');
-});
+Route::resource('Speciality',SpecialityController::class)->except("create");
+// Route::get('/admin/admin-dashboard',[SpecialityController::class,'index']);
 Route::get('/doctor/doctor-dashboard', function () {
     return view('doctor.doctor-dashboard');
 });
