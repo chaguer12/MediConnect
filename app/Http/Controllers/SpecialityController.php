@@ -40,9 +40,23 @@ class SpecialityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Speciality $speciality)
+    public function show()
     {
-        //
+        // $specialities = Speciality::all();
+        
+        // return view('doctors',[
+        //     'specialities' => $specialities,
+            
+        // ]);
+    }
+    public function display()
+    {
+        $specialities = Speciality::all();
+        
+        return view('doctors',[
+            'specialities' => $specialities,
+            
+        ]);
     }
 
     /**
