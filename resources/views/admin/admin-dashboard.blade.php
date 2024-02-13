@@ -2,6 +2,7 @@
 <body class="bg-[#f3f4f6]">
 <!-- @include('includes.nav') -->
 <x-app-layout>
+  
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -53,9 +54,15 @@
           <button href="" value="{{$speciality->id}}" class="edit-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Edit
           </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <form action="{{ route('Speciality.destroy',['Speciality' => $speciality->id])}}" method="post">
+            @csrf
+            @method('DELETE')
+
+             <input hidden id="spec_input"  type="text" name="id" value="{{$speciality->speciality_name}}">
+          <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Delete
           </button>
+          </form>
         </td>
       </tr>
       @endforeach
@@ -137,7 +144,7 @@
       	</div>
       
       	<div class="px-10 py-5 text-gray-600">
-          <input id="targeted_spec" type="text" name="id" value="">
+          <input hidden id="targeted_spec" type="text" name="id" value="">
           <input type="text" name="Speciality" placeholder="speciality" class="border rounded py-2 px-4">
       	</div>
         

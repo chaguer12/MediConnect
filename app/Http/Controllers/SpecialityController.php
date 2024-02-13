@@ -79,8 +79,13 @@ class SpecialityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Speciality $speciality)
+    public function destroy($id)
     {
-        //
+       if(Speciality::destroy($id)){
+
+        return redirect()->route('Speciality.index')->with('success', 'Speciality deleted successfully!');
+        
+       }
+        
     }
 }
