@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialityController;
+use App\Models\Medicine;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::resource('medicine',MedicineController::class);
 Route::resource('Speciality',SpecialityController::class);
 // Route::get('/admin/admin-dashboard',[SpecialityController::class,'index']);
 Route::get('/doctor/doctor-dashboard', function () {

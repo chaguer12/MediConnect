@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Speciality;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class SpecialityController extends Controller
@@ -13,8 +14,10 @@ class SpecialityController extends Controller
     public function index()
     {
         $specialities = Speciality::all();
+        $medicines = Medicine::all();
         return view('admin.admin-dashboard',[
             'specialities' => $specialities,
+            'medicines' => $medicines,
         ]);
     }
 

@@ -83,11 +83,15 @@
               <!-- Create Form -->
               <div class="mb-4">
                 <p>Create a medicine</p>
-                <input type="text" name="medicine" placeholder="medicine" class="border rounded py-2 px-4">
+             <form action="{{route('medicine.store')}}" enctype="multipart/form-data" method="post">
+              @csrf
+              
+             <input type="text" name="medicine" placeholder="medicine" class="border rounded py-2 px-4">
 
-                <button type="submit" class="bg-[#4338ca] hover:shadow-lg text-white font-bold py-2 px-4 rounded">
-                  Create
-                </button>
+            <button type="submit" class="bg-[#4338ca] hover:shadow-lg text-white font-bold py-2 px-4 rounded">
+              Create
+            </button>
+             </form>
               </div>
 
               <!-- Table -->
@@ -104,9 +108,10 @@
                 <!-- Table body -->
                 <tbody>
                   <!-- Table rows -->
+                 @foreach($medicines as $medicine)
                   <tr>
-                    <td class="border px-4 py-2">1</td>
-                    <td class="border px-4 py-2">Item 1</td>
+                    <td class="border px-4 py-2">{{$medicine->id}}</td>
+                    <td class="border px-4 py-2">{{$medicine->medic_name}}</td>
 
                     <td class="border px-4 py-2">
                       <!-- CRUD actions -->
@@ -118,6 +123,7 @@
                       </button>
                     </td>
                   </tr>
+                  @endforeach
 
                   <!-- Add more rows as needed -->
                 </tbody>
