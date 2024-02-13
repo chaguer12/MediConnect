@@ -115,7 +115,7 @@
 
                     <td class="border px-4 py-2">
                       <!-- CRUD actions -->
-                      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <button  value="{{$medicine->id}}" class="edit-btn1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Edit
                       </button>
                       <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
@@ -135,6 +135,31 @@
       </div>
     </div>
 
+    <div id="modal1" class="hidden min-w-screen h-screen animated fadeIn faster   fixed  left-0 top-0  inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
+      <form id="edit-form1" action="{{ route('medicine.update',['medicine' => $medicine->id])}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="absolute border border-[#4338ca] z-20 md:w-1/3 sm:w-full rounded-lg shadow-lg bg-white mx-auto ">
+          <div class="flex justify-between border-b border-gray-100 px-5 py-4">
+            <div>
+              <i class="fas fa-exclamation-circle text-blue-500"></i>
+              <span class="font-bold text-[#4338ca] text-lg">Edit</span>
+            </div>
+
+          </div>
+
+          <div class="px-10 py-5 text-gray-600">
+            <input hidden id="targeted_spec1" type="text" name="id" value="">
+            <input type="text" name="medicine" placeholder="medicine" class="border rounded py-2 px-4">
+          </div>
+
+          <div class="px-5 py-4 flex justify-end">
+            <button type="submit" id="saveChanges" class="text-sm py-2 px-3 text-gray-500 hover:text-gray-600 transition duration-150">Save</button>
+      </form>
+      <a href="{{route('medicine.index')}}" id="closeModalBtn1" class="text-sm py-2 px-3 text-gray-500 hover:text-gray-600 transition duration-150">Close</a>
+    </div>
+    </div>
+    </div>
     <div id="modal" class="hidden min-w-screen h-screen animated fadeIn faster   fixed  left-0 top-0  inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
       <form id="edit-form" action="{{ route('Speciality.update',['Speciality' => $speciality->id])}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -160,6 +185,9 @@
     </div>
     </div>
     </div>
+
+    
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main1.js') }}"></script>
   </x-app-layout>
 </body>

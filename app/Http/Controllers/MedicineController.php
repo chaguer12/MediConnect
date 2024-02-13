@@ -65,7 +65,14 @@ class MedicineController extends Controller
      */
     public function update(Request $request, Medicine $medicine)
     {
-        //
+        
+        if(!empty($request->medicine)){
+            Medicine::where('id',$request->id)->update(['medic_name' => $request->medicine]);
+            return redirect()->route('medicine.index')->with('success', 'medicine updated successfully!');
+        }else{
+            
+            return redirect()->route('medicine.index');
+        }
     }
 
     /**
