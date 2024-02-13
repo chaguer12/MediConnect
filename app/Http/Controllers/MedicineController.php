@@ -78,8 +78,10 @@ class MedicineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Medicine $medicine)
+    public function destroy($id)
     {
-        //
+        if(Medicine::destroy($id)){
+            return redirect()->route('medicine.index')->with('success', 'medicine deleted successfully!');
+        }
     }
 }

@@ -118,9 +118,13 @@
                       <button  value="{{$medicine->id}}" class="edit-btn1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Edit
                       </button>
-                      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                        Delete
-                      </button>
+                      <form action="{{route('medicine.destroy',['medicine' => $medicine->id])}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            Delete
+                        </button>
+                      </form>
                     </td>
                   </tr>
                   @endforeach
@@ -186,7 +190,7 @@
     </div>
     </div>
 
-    
+
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/main1.js') }}"></script>
   </x-app-layout>
