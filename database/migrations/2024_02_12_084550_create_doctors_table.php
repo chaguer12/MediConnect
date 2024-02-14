@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('disponibility');
+            $table->text('description');
             $table->foreignId('speciality_id')->constrained();
             $table->timestamps();
+            $table->string('image');
         });
     }
 

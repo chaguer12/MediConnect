@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Services\ImageService;
+use App\Models\Speciality;
+use App\Models\User;
 
 class DoctorController extends Controller
 {
+    private $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+
+        $this->imageService = $imageService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $specialities = Speciality::all();
+        return view('doctor.doctor-dashboard', [
+            'specialities' => $specialities,
+        ]);
     }
 
     /**
@@ -20,7 +35,6 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +42,21 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(Auth::id()); 
+        // dd(Auth::id());
+        $validatedData = $request->validate([
+            'image' => 'required|image',
+            'description' => 'required|string',
+            'speciality' => 'required',
+        ]);
+        $imageName = $this->imageService->moveImage($validatedData["image"]);
+        $doctor = Doctor::create([
+            "user_id" => Auth::id(),
+            "image" => $imageName,
+            "speciality_id" => $validatedData["speciality"],
+            "description" => $validatedData["description"]
+        ]);
+        dd($doctor);
     }
 
     /**

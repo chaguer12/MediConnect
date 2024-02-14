@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialityController;
@@ -25,12 +26,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::resource('doctor',DoctorController::class);
 Route::resource('medicine',MedicineController::class);
 Route::resource('Speciality',SpecialityController::class);
+
 Route::get('/doctors',[SpecialityController::class,'display']);
-Route::get('/doctor/doctor-dashboard', function () {
-    return view('doctor.doctor-dashboard');
-});
+Route::get('/doctor/doctor-dashboard', [SpecialityController::class,'fetch_doctor_specialities']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

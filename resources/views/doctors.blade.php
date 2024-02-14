@@ -47,12 +47,12 @@ Choose from a variety of specialities
  <section  class="grid grid-cols-3 gap-8">
 @foreach($specialities as $speciality)
  <div class="max-w-xs mx-auto">
-    <a href="#" class="block relative bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-gray-300 hover:bg-white hover:shadow-md">
+    <a href="#" class="block relative bg-white border border-[#a78bfa] rounded-lg overflow-hidden hover:border-gray-300 hover:bg-white hover:shadow-md">
         <div class="p-6">
             <p class="text-base text-gray-600">{{$speciality->speciality_name}}</p>
             <p class="text-sm text-gray-500">Card description with lots of great facts and interesting details.</p>
         </div>
-        <div class="absolute top-0 right-0 -mt-3 -mr-3 bg-[#4338ca] rounded-full w-8 h-8 flex items-center justify-center">
+        <div class="absolute top-0 right-0 -mt-3 -mr-3 bg-[#a78bfa] rounded-full w-8 h-8 flex items-center justify-center">
             <div class="transform rotate-45 text-white">→</div>
         </div>
     </a>
