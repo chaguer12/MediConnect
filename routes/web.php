@@ -29,7 +29,7 @@ Route::get('/about', function () {
 Route::resource('doctor',DoctorController::class);
 Route::resource('medicine',MedicineController::class);
 Route::resource('Speciality',SpecialityController::class);
-
+Route::get('/doctor-profile',[DoctorController::class,'show']);
 Route::get('/doctors',[SpecialityController::class,'display']);
 Route::get('/doctor/doctor-dashboard', [SpecialityController::class,'fetch_doctor_specialities']);
 Route::get('/dashboard', function () {

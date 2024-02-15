@@ -24,17 +24,30 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $specialities = Speciality::all();
-        return view('doctor.doctor-dashboard', [
+        $doctor = Doctor::where('user_id',Auth::id())->first();
+        
+        
+        if(isset($doctor)){
+            $doc = Doctor::with('User')->where('user_id' , Auth::id())->first();
+            return view('doctor.doctor-profile', compact('doc'));
+        }else{
+            $specialities = Speciality::all();
+            return view('doctor.doctor-dashboard', [
             'specialities' => $specialities,
         ]);
+
+        }
+        
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        
     }
 
     /**
@@ -42,21 +55,27 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(Auth::id()); 
-        // dd(Auth::id());
+        
         $validatedData = $request->validate([
             'image' => 'required|image',
             'description' => 'required|string',
             'speciality' => 'required',
         ]);
-        $imageName = $this->imageService->moveImage($validatedData["image"]);
-        $doctor = Doctor::create([
+        
+            $imageName = $this->imageService->moveImage($validatedData["image"]);
+            $doctor = Doctor::create([
             "user_id" => Auth::id(),
             "image" => $imageName,
             "speciality_id" => $validatedData["speciality"],
             "description" => $validatedData["description"]
         ]);
-        dd($doctor);
+
+
+
+        return redirect()->route('doctor.index');
+       
+            
+    
     }
 
     /**
@@ -64,7 +83,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        
     }
 
     /**
