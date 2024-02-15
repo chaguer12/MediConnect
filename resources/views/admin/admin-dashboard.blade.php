@@ -1,3 +1,4 @@
+@include("../includes/head")
 <body class="bg-[#f3f4f6]">
 
   <x-app-layout>
@@ -34,7 +35,6 @@
                   <tr>
                     <th class="px-4 py-2">#</th>
                     <th class="px-4 py-2">Name</th>
-
                     <th class="px-4 py-2">Actions</th>
                   </tr>
                 </thead>
@@ -53,7 +53,7 @@
                       <button href="" value="{{$speciality->id}}" class="edit-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Edit
                       </button>
-                      <form action="{{ route('Speciality.destroy',['Speciality' => $speciality->id])}}" method="post">
+                      <form class="" action="{{ route('Speciality.destroy',['Speciality' => $speciality->id])}}" method="post">
                         @csrf
                         @method('DELETE')
 

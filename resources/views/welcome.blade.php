@@ -168,14 +168,14 @@
             <div class="container max-w-7xl px-4">
                 <!-- Section Header -->
                 <div class="flex flex-wrap justify-center text-center mb-24">
-                    <div class="w-full lg:w-6/12 px-4">
+                    <div class="w-full lg:w-6/12 ">
                         <!-- Header -->
-                        <h1 class="text-gray-900 text-4xl font-bold mb-8">
+                        <h1 class="mb-8 py-16 text-center font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
                             Meet the Team
                         </h1>
 
                         <!-- Description -->
-                        <p class="text-gray-700 text-lg font-light">
+                        <p class="text-gray-700 text-lg mb-4 font-light">
                             With over 100 years of combined experience, we've got a well-seasoned team at the helm.
                         </p>
                     </div>
