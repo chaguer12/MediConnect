@@ -182,7 +182,7 @@
                 </div>
 
                 <!-- Team Members -->
-                <div class="flex flex-wrap">
+                <div class="flex ">
                     <!-- Member #1 -->
                     <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
                         <div class="flex flex-col">

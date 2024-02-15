@@ -44,7 +44,7 @@ Choose from a variety of specialities
       
         
 </h2>
- <section  class="grid grid-cols-3 gap-8">
+ <section  class="flex flex-wrap gap-4">
 @foreach($specialities as $speciality)
  <div class="max-w-xs mx-auto">
     <a href="#" class="block relative bg-white border border-[#a78bfa] rounded-lg overflow-hidden hover:border-gray-300 hover:bg-white hover:shadow-md">
