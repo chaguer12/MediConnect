@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
 Route::resource('doctor',DoctorController::class);
 Route::resource('medicine',MedicineController::class);
 Route::resource('Speciality',SpecialityController::class);

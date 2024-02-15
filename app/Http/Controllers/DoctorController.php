@@ -9,7 +9,7 @@ use App\Services\ImageService;
 use App\Models\Speciality;
 use App\Models\User;
 
-class DoctorController extends Controller
+class   DoctorController extends Controller
 {
     private $imageService;
 
@@ -46,11 +46,17 @@ class DoctorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Speciality $speciality)
     {
         
+        $doctors = Doctor::with(['User','Speciality'])->where('speciality_id',$_REQUEST['speciality_id']);
+       
+        
+        return view('get-doctor',[
+            'doctors' =>$doctors,
+        ]);
     }
-
+  
     /**
      * Store a newly created resource in storage.
      */

@@ -58,7 +58,7 @@
                         @method('DELETE')
 
                         <input hidden id="spec_input" type="text" name="id" value="{{$speciality->speciality_name}}">
-                        <button onclick="return confirm('Are you sure to delete?')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        <button  onclick="return confirm('Are you sure to delete?')" class="bg-[#ef4444] text-white font-bold py-2 px-4 rounded">
                           Delete
                         </button>
                       </form>
