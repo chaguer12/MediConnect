@@ -28,7 +28,8 @@ class DoctorController extends Controller
         
         
         if(isset($doctor)){
-            $doc = Doctor::with('User')->where('user_id' , Auth::id())->first();
+            $doc = Doctor::with(['User','Speciality'])->where('user_id' , Auth::id())->first();
+            
             return view('doctor.doctor-profile', compact('doc'));
         }else{
             $specialities = Speciality::all();
