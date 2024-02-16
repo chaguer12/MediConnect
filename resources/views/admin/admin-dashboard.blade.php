@@ -1,4 +1,4 @@
-@include("../includes/head")
+@include("../includes.head")
 <body class="bg-[#f3f4f6]">
 
   <x-app-layout>
