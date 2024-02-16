@@ -46,14 +46,21 @@ class   DoctorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Speciality $speciality)
+    public function create(Request $request)
     {
+        $speciality_id = $request->speciality_id;
+        $doctors = Doctor::with(['User','Speciality'])->where('speciality_id',$speciality_id)->get();
+        if($doctors->isEmpty()){
+            $message = "No doctors are found ! Try later...";
+        }else{
+            $message = "";
+        }
         
-        $doctors = Doctor::with(['User','Speciality'])->where('speciality_id',$_REQUEST['speciality_id']);
        
         
         return view('get-doctor',[
             'doctors' =>$doctors,
+            'message' =>$message,
         ]);
     }
   

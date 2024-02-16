@@ -1,76 +1,57 @@
 @include('includes.head')
 <body class="bg-[#f3f4f6]">
 @include('includes.nav')
-@dump($doctors)
-<section>
-    <div class=" text-black py-8">
-    <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-      <div class="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
-        <p class="ml-2 text-[#4338ca] uppercase tracking-loose">our goal</p>
-        <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Medi Connect</p>
-        <p class="text-sm md:text-base text-black mb-4">
-        clinic offers an interactive platform allowing patients to consult different medical specialties, explore doctors' profiles, and make appointments with the doctors of their choice for the current day. ​
-        </p>
-        <a href="{{url('doctors')}}"
-        class="bg-transparent mr-auto hover:bg-[#4338ca] text-[#4338ca] hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-[#4338ca] hover:border-transparent">
-        Explore Now</a>
-      </div>
-      <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
-        <div class="container mx-auto w-full h-full">
-          <div class="relative wrap overflow-hidden p-10 h-full">
-            <div class="border-2-2 border-[#4338ca] absolute h-full border"
-              style="right: 50%; border: 2px solid #4338ca; border-radius: 1%;"></div>
-            <div class="border-2-2 border-[#4338ca] absolute h-full border"
-              style="left: 50%; border: 2px solid #4338ca; border-radius: 1%;"></div>
-            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-              <div class="order-1 w-5/12"></div>
-              <div class="order-1 w-5/12 px-1 py-4 text-right">
-                <p class="mb-3 text-base text-[#4338ca]">Easy registration</p>
-                <h4 class="mb-3 font-bold text-lg md:text-2xl">Accessible</h4>
-                <p class="text-sm md:text-base leading-snug text-black text-opacity-100">
-                    You can have the ability to consult doctors within minutes after your registration
-                </p>
-              </div>
-            </div>
-            <div class="mb-8 flex justify-between items-center w-full right-timeline">
-              <div class="order-1 w-5/12"></div>
-              <div class="order-1  w-5/12 px-1 py-4 text-left">
-                <p class="mb-3 text-base text-[#4338ca]">trusted Doctors</p>
-                <h4 class="mb-3 font-bold text-lg md:text-2xl">Trustworthy</h4>
-                <p class="text-sm md:text-base leading-snug text-black text-opacity-100">
-                  The doctors in our website are certified to practice their profession and we make sure to bring the best doctors
-                </p>
-              </div>
-            </div>
-            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-              <div class="order-1 w-5/12"></div>
-              <div class="order-1 w-5/12 px-1 py-4 text-right">
-                <p class="mb-3 text-base text-[#4338ca]"> Powerful website</p>
-                <h4 class="mb-3 font-bold text-lg md:text-2xl">Efficient</h4>
-                <p class="text-sm md:text-base leading-snug text-black text-opacity-100">
-                  during the development of the website the best technologies had been choosen to ensure fluidity while using the website
-                </p>
-              </div>
-            </div>
 
-            <div class="mb-8 flex justify-between items-center w-full right-timeline">
-              <div class="order-1 w-5/12"></div>
-
-              <div class="order-1  w-5/12 px-1 py-4">
-                <p class="mb-3 text-base text-[#4338ca]">Team</p>
-                <h4 class="mb-3 font-bold  text-lg md:text-2xl text-left">Service</h4>
-                <p class="text-sm md:text-base leading-snug text-black text-opacity-100">
-                Our team consists of experienced physicians, nurses, and healthcare specialists who are passionate about delivering high-quality care to every patient we serve.
-                </p>
-              </div>
+<section class="py-16 flex justify-center">
+    <div class="w-3/4 flex justify-between">
+        <div class="w-3/4">
+            @if($message)
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900 flex">
+                            <marquee class="font-bold" direction="left">{{ $message }}</marquee>
+                            <marquee class="font-bold" direction="left">{{ $message }}</marquee>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <img class="mx-auto -mt-36 md:-mt-36" src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png" />
+            @endif
+
+            <div class="py-12">
+                @foreach($doctors as $doctor)
+                
+                    <div class="max-w-xl p-4 sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6 text-gray-900 flex">
+                                <div>
+                                    <img class="h-16 shadow-lg rounded-md" src="{{ asset('images/storage/'.$doctor->image) }}" alt="profile image">
+                                    <h1 class="font-bold">{{ $doctor->User->username }}</h1>
+                                    <p>{{ substr($doctor->description, 0, 100) }}</p>
+                                    <p class="text-gray-500">{{ $doctor->User->email }}</p>
+                                    <p class="text-sm">Member since: <span class="text-gray-500">{{ $doctor->created_at }}</span></p>
+                                    <div class="flex justify-between">
+                                        <svg class="mt-2" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#B197FC" d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"/></svg>
+                                        <a href="" class="text-[#4338ca] hover:border-bottom">Consult</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                @endforeach
+            </div>
         </div>
-      </div>
+        
+        <div class="w-1/4">
+            <!-- Section for favorite doctors -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <h2 class="text-lg font-semibold mb-4">Favorite Doctors</h2>
+                <!-- Add your favorite doctors list here -->
+            </div>
+        </div>
     </div>
-  </div>
-  </section>
-
+</section>
 
 </body>
