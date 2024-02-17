@@ -22,4 +22,8 @@ class Doctor extends Model
     public function Speciality(){
         return $this->belongsTo(Speciality::class);
     }
+
+    public function RendezVous(){
+        return $this->hasMany(RendezVous::class);
+    }
 }
