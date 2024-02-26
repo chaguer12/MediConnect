@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -18,9 +20,24 @@ class FavoriteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+            
+        $doctor_id = $request->doctor;
+        $patient_id = Auth::id();
+        PatientController::create($patient_id);
+        if(Auth::check()){
+            $favorite = Favorite::create([
+                'patient_id' => $patient_id ,
+                'doctor_id' =>$doctor_id,
+            ]);
+
+        }else{
+            return 'not logged in!';
+        }
+        
+        redirect()->route('doctor.index');
+        
     }
 
     /**
@@ -28,7 +45,7 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -58,8 +75,11 @@ class FavoriteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Favorite $favorite)
+    public function destroy($id)
     {
-        //
+      if(Favorite::destroy($id)){
+         redirect()->route('doctor.index');
+      }
+        
     }
 }

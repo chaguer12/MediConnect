@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialityController;
@@ -28,6 +29,7 @@ Route::get('/about', function () {
 });
 
 Route::resource('doctor',DoctorController::class);
+Route::resource('favorite',FavoriteController::class);
 Route::resource('medicine',MedicineController::class);
 Route::resource('Speciality',SpecialityController::class);
 Route::get('/doctor-profile',[DoctorController::class,'show']);

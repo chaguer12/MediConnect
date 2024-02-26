@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
 use App\Models\Speciality;
@@ -25,6 +26,7 @@ class   DoctorController extends Controller
     public function index()
     {
         $doctor = Doctor::where('user_id',Auth::id())->first();
+        
         
         
         if(isset($doctor)){
@@ -50,10 +52,16 @@ class   DoctorController extends Controller
     {
         $speciality_id = $request->speciality_id;
         $doctors = Doctor::with(['User','Speciality'])->where('speciality_id',$speciality_id)->get();
+        $favorites =Favorite::with(['User','Doctor'])->where('patient_id',Auth::id())->get();
         if($doctors->isEmpty()){
             $message = "No doctors are found ! Try later...";
         }else{
             $message = "";
+        }
+        if($favorites->isEmpty()){
+            $message1 = "You have 0 favorite doctors";
+        }else{
+            $message1 = "";
         }
         
        
@@ -61,6 +69,8 @@ class   DoctorController extends Controller
         return view('get-doctor',[
             'doctors' =>$doctors,
             'message' =>$message,
+            'favorites' => $favorites,
+            'message1' => $message1,
         ]);
     }
   

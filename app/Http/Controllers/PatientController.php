@@ -18,9 +18,14 @@ class PatientController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    static function create($user_id)
     {
-        //
+        if(!Patient::find($user_id)){
+        $patient = Patient::create([
+            'user_id' => $user_id,
+        ]);
+        return $patient->id;
+    }
     }
 
     /**
